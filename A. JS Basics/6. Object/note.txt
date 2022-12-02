@@ -1,0 +1,12 @@
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+In a function definition, this refers to the "owner" of the function.
+In the example above, this is the person object that "owns" the Biodata function.
+In other words, this.Name means the Name property of this object.
+
+NOTE : 'this' is not a variable. It is a keyword. You cannot change the value of this. 
