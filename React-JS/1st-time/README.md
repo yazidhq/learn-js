@@ -1,3 +1,5 @@
+# First Time using react: learn about Components, Properties and UseState
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
