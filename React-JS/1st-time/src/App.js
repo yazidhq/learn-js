@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+// Penggunaan useState
+import { useState } from "react";
+
+// Penggunaan useRef
+import { useRef } from 'react'; 
+
 // mengambil data dari components
 import MyButton from './components/MyButton';
 import Navbar from './components/Navbar';
@@ -31,11 +38,34 @@ const App = () => {
     setNavVal("MyContact")
   }
 
+  // penggunaan useRef
+  const linkRef = useRef(null)
+  const goto = (ref) => {
+    window.scrollTo({
+        top: ref.offsetTop,
+        left: 0,
+        // agar turun secara halus atau perlahan
+        behavior: 'smooth'
+    })
+  }
+  const linkRef2 = useRef(null)
+  const goto2 = (ref) => {
+    window.scrollTo({
+        top: ref.offsetTop,
+        left: 0,
+        // agar turun secara halus atau perlahan
+        behavior: 'smooth'
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <Navbar navSosmed={navSosmed} navHeader={navHeader} navValue={getNavVal}/>
-        <img src={logo} className="App-logo" alt="logo" />
+      <header ref={linkRef2} className="App-header">
+        <Navbar navSosmed={navSosmed} navHeader={navHeader} navValue={getNavVal}/>=
+        <div onClick={() => goto(linkRef.current)}>
+          <img src={logo} className="App-logo" alt="logo" />
+        </div>
+
         <p>Hello World!</p>
         <MyButton clicked={clicked}/>
         <Footer paragraph={paragraph} />
@@ -43,6 +73,13 @@ const App = () => {
         <p>Penggunaan State Pada React</p>
         <UseState navValue={getNavVal} />
         <button onClick={() => changeNavVal()}>changeNavVal</button>
+
+        <p>lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  </p>
+        <p>Penggunaan useRef untuk link ke halaman yang sama</p>
+        <button ref={linkRef} >useRef</button>
+        <p>lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  </p>
+        <p>Penggunaan useRef untuk link ke halaman yang sama</p>
+        <button onClick={() => goto2(linkRef2.current)}>^</button>
       </header>
     </div>
   );
